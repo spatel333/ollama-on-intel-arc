@@ -1,0 +1,4 @@
+*.tgz
+ollama-ipex-llm-2.3.0b20250725-ubuntu/
+logs/
+Miniforge3-Linux-x86_64.sh
