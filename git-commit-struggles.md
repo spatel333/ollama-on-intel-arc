@@ -45,3 +45,24 @@ That's also why git diff --stat --cached origin/main looked clean — it only co
 So the fix isn't "remove from tracking," it's "remove from history."
 ```
 
+### Solution: Remove .git & re-initialize repo
+This only works since this our initial commit. Had it been during a working project, the commits would have had to be removed then re-added after a proper .gitignore was initialized. In other words, we wipe out the working session & history of commits.
+
+### Work
+```
+rm -rf .git
+git init -b main
+git add .gitignore
+git add . && git commit -m "initializing repo"
+
+git remote add origin https://github.com/spatel333/ollama-on-intel-arc.git
+# ERROR: git push --set-upstream origin main
+```
+Remote work conflicts with local changes. Had to merge the changes in README.md before proceeding:
+```
+git pull origin main --rebase
+git add README.md
+git commit -m "merged README.md"
+git rebase --continue
+git push --set-upstream origin main
+```
