@@ -9,6 +9,31 @@ Percipitating factor: we were unable to install libigc1. Kept conflicting with t
 Fix: install `libze-intel-gpu1` (the modern package)
 ##### this is for llama, not ollama
 
+Claude rec was to do what Rittnauer's fix was: install libze-intel-gpu1
+
+```
+sudo apt remove intel-level-zero-gpu intel-opencl-icd libigc1 libigdfcl1
+sudo apt update
+sudo apt install libze1 libze-intel-gpu1 intel-opencl-icd libigc2 libigdfcl2
+```
+
+##### Intel docs on OpenVINO install
+```
+wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
+sudo gpg --output /etc/apt/trusted.gpg.d/intel.gpg --dearmor GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
+echo "deb https://apt.repos.intel.com/openvino ubuntu24 main" | sudo tee /etc/apt/sources.list.d/intel-openvino.list
+sudo apt update
+
+# Install OpenVINO runtime
+sudo apt install openvino-2026.3.1
+```
+
+##### Also consider this
+https://docs.openvino.ai/2026/get-started/install-openvino.html?PACKAGE=OPENVINO_BASE&VERSION=v_2026_3_1&OP_SYSTEM=LINUX&DISTRIBUTION=APT
+
+
+
+
 
 ## 29 Aug 2026
 ### OLLAMA startup failure
