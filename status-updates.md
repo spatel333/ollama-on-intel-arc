@@ -1,6 +1,15 @@
 # Status Updates
 General log of work
 
+## 30 Aug 2026
+### Installing OpenVINO drivers / packages
+[Rittnauer Blog Post](https://rittnauer.at/posts/local-llm-homelab-llama-cpp-sycl-hermes/) shows us the intricacies in installing OpenVINO in an Ubuntu environment.
+Percipitating factor: we were unable to install libigc1. Kept conflicting with the newer libigc2. Old Intel docs recommend older libigc1; newer Ubuntu stack ships with newer libigc2
+
+Fix: install `libze-intel-gpu1` (the modern package)
+##### this is for llama, not ollama
+
+
 ## 29 Aug 2026
 ### OLLAMA startup failure
 In the past, we've been able to serve ollama & run queries in VSCode. We've even been able to spin up an openUI GUI & run the model through there.
